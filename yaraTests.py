@@ -6,21 +6,19 @@ def mycallback(data):
     print(data)
     return yara.CALLBACK_CONTINUE
 
-'''
-directory = '/Users/joecus1/Desktop/Yara-Rules/rules/maldocs/'
-filelist = os.listdir(directory)
-dict = {}
 
-for i in range(len(filelist)):
-    dict["file" + str(i)] = \
-        '/Users/joecus1/Desktop/Yara-Rules/rules/maldocs/' + filelist[i]
-'''
+directory = '/Users/joecus1/Desktop/Yara-Rules/rules/maldocs/'
+files = os.listdir(directory)
 
 filename = askopenfilename()
 
-rules = yara.compile(filepath='/Users/joecus1/Desktop/Yara-Rules/rules/maldocs/Maldoc_VBA_macro_code.yar')
+# rules = yara.compile(filepath='/Users/joecus1/Desktop/Yara-Rules/rules/maldocs/Maldoc_VBA_macro_code.yar')
 
 # rules = yara.compile(filepaths=dict)
 
-matches = rules.match(filename,
-                      callback=mycallback, which_callbacks=yara.CALLBACK_MATCHES)
+for file in files:
+    try:
+        rule = yara.compile(filepath=directory + file)
+        matches = rule.match(filename,callback=mycallback, which_callbacks=yara.CALLBACK_MATCHES)
+    except:
+        print(file + " not working")
