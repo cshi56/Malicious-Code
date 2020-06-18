@@ -1,5 +1,10 @@
 body {
-    background-color: blue;
+    background-color: #040f5c;
+}
+
+h1 {
+    color: white;
+    text-align: center;
 }
 
 p {
