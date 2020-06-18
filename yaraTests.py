@@ -7,7 +7,7 @@ def mycallback(data):
     return yara.CALLBACK_CONTINUE
 
 
-directory = '/Users/joecus1/Desktop/Yara-Rules/rules/maldocs/'
+directory = '/Users/joecus1/Desktop/Malicious-Code/rules/'
 files = os.listdir(directory)
 
 filename = askopenfilename()
@@ -21,4 +21,4 @@ for file in files:
         rule = yara.compile(filepath=directory + file)
         matches = rule.match(filename,callback=mycallback, which_callbacks=yara.CALLBACK_MATCHES)
     except:
-        print(file + " not working")
+        pass
