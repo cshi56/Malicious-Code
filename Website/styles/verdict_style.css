@@ -1,0 +1,26 @@
+
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+.v-header {
+    background:  #012169 url(https://assets.styleguide.duke.edu/cdn/images/wordmark/duke_wordmark-white.svg) center left;
+    background-repeat: no-repeat;
+    background-size: 100px 34px;
+    background-position-x: 20px;
+    vertical-align: left;
+    height: 68px;
+    width: 100%;
+}
+
+#site-name {
+    font: 'Open Sans';
+    display: table-cell;
+    vertical-align: top;
+    color: #fff;
+    padding-left: 128px;
+    letter-spacing: .05em;
+}
+
+
