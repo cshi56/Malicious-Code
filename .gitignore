@@ -1,0 +1,5 @@
+/django-site/bin
+/django-site/include
+/django-site/lib
+/django-site/pyvenv.cfg
+
