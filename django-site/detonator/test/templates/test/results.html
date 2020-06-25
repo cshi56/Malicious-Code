@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--This is a comment-->
+<html>
+    <!--Meta tags and viewport tags go in head-->
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <meta name="author" content = "Malicious Code Team">
+        <meta name="description" content = "Upload files to this site to check if they are
+                                                    malicious and see a detailed analysis of
+                                                    malicious content.">
+        <meta name="keywords" content="malware, antivirus, anti-virus, Duke">
+        <title> Malware Attachment Analysis </title>
+
+        <!-- <link rel="stylesheet" href="styles/homestyle.css"> -->
+
+    </head>
+
+    <body>
+        <h1> Malware Attachment Analysis </h1>
+
+        {% if latest_question_list %}
+        {% for output in latest_question_list %}
+          {% if risk is Bad %}
+            <p>VERDICT: Dangerous. Analysis found signs of malware. Don't open or run the file. Report it to OIT above.</p>
+          {% endif %}
+        {% endfor %}
+        {% else %}
+        <p>No outputs are available.</p>
+        {% endif %}
+
+        <a href="/test/{{ number }}/details">View Details </a>
+
+    </body>
+</html>
