@@ -34,7 +34,6 @@ STATICFILES_DIRS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'test.apps.TestConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +43,8 @@ INSTALLED_APPS = [
 
     #my apps
     'pages',
+    'test.apps.TestConfig',
+
 ]
 
 MIDDLEWARE = [
