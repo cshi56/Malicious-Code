@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     #my apps
     'pages',
-    'test.apps.TestConfig',
+    'test',
 
 ]
 
