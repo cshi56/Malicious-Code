@@ -19,5 +19,14 @@
 
         <p> Welcome to our website </p>
 
+        <br>
+        <br>
+
+        <form action="/submit-file/" method="post">
+          {% csrf_token %}
+          {{ form }}
+          <input type="submit" value="Submit">
+        </form>
+
     </body>
 </html>

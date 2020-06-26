@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Submission, Output
+from .forms import UploadFileForm
 
 
 def index(request):
@@ -18,4 +19,5 @@ def details(request, submission_id):
     return render(request, 'test/details.html', context)
 
 def home(request):
-    return render(request, 'test/home.html')
+    form = UploadFileForm()
+    return render(request, 'test/home.html', {'form': form})
