@@ -9,7 +9,11 @@
     <meta name="author" content = "Malicious Code Team">
     <meta name="description" content = "Analysis found signs of malware">
     <meta name="keywords" content="malware, antivirus, anti-virus, Duke">
-    <title> Malware Attachment Analysis </title>
+    <title>
+        {% block title %}
+        Malware Attachment Analysis
+        {% endblock %}
+    </title>
     <link rel="stylesheet" href="{% static 'css/verdict_style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
 
@@ -24,13 +28,14 @@
         <h1> | Malware Attachment Analysis </h1>
     </div>
 
-
 </header>
 
 
 
 </body>
 
-
+    {% block content %}
+        replace me
+    {% endblock %}
 
 </html>

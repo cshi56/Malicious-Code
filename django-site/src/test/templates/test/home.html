@@ -1,32 +1,14 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 <!--This is a comment-->
-<html>
-    <!--Meta tags and viewport tags go in head-->
-    <head>
-        <meta charset = "UTF-8">
-        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-        <meta name="author" content = "Malicious Code Team">
-        <meta name="description" content = "Upload files to this site to check if they are
-                                                    malicious and see a detailed analysis of
-                                                    malicious content.">
-        <meta name="keywords" content="malware, antivirus, anti-virus, Duke">
-        <title> Malware Attachment Analysis </title>
+{% block content %}
+    <p> Welcome to our website </p>
 
-    </head>
+    <br>
+    <br>
 
-    <body>
-        <h1> Malware Attachment Analysis </h1>
-
-        <p> Welcome to our website </p>
-
-        <br>
-        <br>
-
-        <form action="/submit-file/" method="post">
-          {% csrf_token %}
-          {{ form }}
-          <input type="submit" value="Submit">
-        </form>
-
-    </body>
-</html>
+    <form action="/submit-file/" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Submit">
+    </form>
+{% endblock %}

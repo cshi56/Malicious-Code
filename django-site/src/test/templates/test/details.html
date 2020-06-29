@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<!--This is a comment-->
-<html>
-    <!--Meta tags and viewport tags go in head-->
-    <head>
-        <meta charset = "UTF-8">
-        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-        <meta name="author" content = "Malicious Code Team">
-        <meta name="description" content = "Upload files to this site to check if they are
-                                                    malicious and see a detailed analysis of
-                                                    malicious content.">
-        <meta name="keywords" content="malware, antivirus, anti-virus, Duke">
-        <title> Malware Attachment Analysis </title>
+{% extends 'base.html' %}
 
-        <!-- <link rel="stylesheet" href="styles/homestyle.css"> -->
+{% block title %}
+    Malware Analysis | Details
+{% endblock %}
 
-    </head>
-
-    <body>
-        <h1> Malware Attachment Analysis </h1>
-
+{% block content %}
         {% if latest_question_list %}
         <ul>
         {% for output in latest_question_list %}
@@ -31,6 +17,4 @@
 
         <a href="/test/{{ number }}/results">Return to Results Summary </a> 
         <br>
-        <a href="https://www.google.com/?client=safari" target="_blank"> Google </a>
-    </body>
-</html>
+{% endblock %}
