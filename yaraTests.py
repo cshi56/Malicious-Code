@@ -6,11 +6,10 @@ def mycallback(data):
     print(data)
     return yara.CALLBACK_CONTINUE
 
+filename = askopenfilename()
 
 directory = '/Users/joecus1/Desktop/Malicious-Code/rules/'
 files = os.listdir(directory)
-
-filename = askopenfilename()
 
 # rules = yara.compile(filepath='/Users/joecus1/Desktop/Yara-Rules/rules/maldocs/Maldoc_VBA_macro_code.yar')
 
