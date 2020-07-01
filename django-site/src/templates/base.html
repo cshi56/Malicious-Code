@@ -25,7 +25,11 @@
 <header class="v-header" role="banner">
 
     <div id="site-name">
-        <h1> | Malware Attachment Analysis </h1>
+        <h1>
+            {% block header %}
+            | Malware Attachment Analysis
+            {% endblock %}
+        </h1>
     </div>
 
 </header>
