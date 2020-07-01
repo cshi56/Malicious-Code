@@ -1,6 +1,7 @@
 from django.db import models
+from django.forms import ModelForm
 
-# Create your models here.
+
 class Submission(models.Model):
     name = models.CharField(max_length=200)
     run_date = models.DateTimeField('date submitted')
@@ -13,11 +14,32 @@ class Submission(models.Model):
             if output__risk is 'Bad':
                 return 'Bad'
 
+class FileSubmission(models.Model):
+    name = models.CharField(max_length=200)
+    run_date = models.DateTimeField('date submitted', auto_now_add=True)
+    file = models.FileField()
+
+    def __str__(self):
+        return file.name()
+
 class Output(models.Model):
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE)
     type = models.CharField(max_length=200)
     risk = models.CharField(max_length=200)
     reason = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.type
+
+class FileSubmissionForm(ModelForm):
+    class Meta:
+        model = FileSubmission
+        fields = ['file', 'name']
+
+class OutputForm(ModelForm):
+    class Meta:
+        model = Output
+        fields = ['submission', 'type', 'risk', 'reason']
 
 #COMMENTED OUT BELOW IS ENUMERATED IMPLEMENTATION OF RISK FIELD
     #class Risk(models.TextChoices):
@@ -30,6 +52,3 @@ class Output(models.Model):
 #        choices=Risk.choices,
 #        default=Risk.CLEAR,
 #    )
-
-    def __str__(self):
-        return self.type

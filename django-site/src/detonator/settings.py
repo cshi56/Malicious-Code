@@ -77,6 +77,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'detonator.wsgi.application'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

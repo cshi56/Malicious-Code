@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Submission, Output
+from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import Submission, Output, FileSubmissionForm, FileSubmission
 from .forms import UploadFileForm
 
 
@@ -19,5 +20,16 @@ def details(request, submission_id):
     return render(request, 'test/details.html', context)
 
 def home(request):
-    form = UploadFileForm()
+    form = FileSubmissionForm()
     return render(request, 'test/home.html', {'form': form})
+
+def send_email(request, submission_id):
+    send_mail(
+    'Potential MALWARE Alert from a Duke User',
+    'The Malicious Code Analysis tool at http://127.0.0.1:8000/test/home has flagged a test by a user who suspects malware. Log into the admin view at http://127.0.0.1:8000/admin to view the details.',
+    'FROM_USER@duke.edu',
+    ['TO_USER@duke.edu'],
+    fail_silently=False,
+    )
+    strin = "/test/"+ submission_id.__str__() + "/results"
+    return HttpResponseRedirect(strin)

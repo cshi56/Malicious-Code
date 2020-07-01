@@ -12,4 +12,6 @@ urlpatterns = [
     path('<int:submission_id>/details/', views.details, name='details'),
 
     path('home', views.home, name='home'),
+
+    path('<int:submission_id>/send_email/', views.send_email)
 ]
