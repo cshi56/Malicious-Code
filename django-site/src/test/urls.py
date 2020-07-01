@@ -13,5 +13,7 @@ urlpatterns = [
 
     path('home', views.home, name='home'),
 
-    path('<int:submission_id>/send_email/', views.send_email)
+    path('<int:submission_id>/send_email/', views.send_email, name='email'),
+
+    path('save_form/', views.save_form, name='save_form')
 ]

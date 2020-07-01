@@ -23,6 +23,12 @@ def home(request):
     form = FileSubmissionForm()
     return render(request, 'test/home.html', {'form': form})
 
+def save_form(request):
+    form = FileSubmissionForm(request.POST, request.FILES)
+    entry = form.save()
+    ##ADD REROUTE IDK
+    return render(request, 'test/home.html', {'form': form})
+
 def send_email(request, submission_id):
     send_mail(
     'Potential MALWARE Alert from a Duke User',

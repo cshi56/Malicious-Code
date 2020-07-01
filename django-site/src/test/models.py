@@ -17,10 +17,10 @@ class Submission(models.Model):
 class FileSubmission(models.Model):
     name = models.CharField(max_length=200)
     run_date = models.DateTimeField('date submitted', auto_now_add=True)
-    file = models.FileField()
+    file = models.FileField(upload_to='uploads/')
 
     def __str__(self):
-        return file.name()
+        return self.name
 
 class Output(models.Model):
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE)
