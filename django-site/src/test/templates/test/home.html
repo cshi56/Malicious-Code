@@ -6,7 +6,7 @@
     <br>
     <br>
 
-    <form action="/submit-file/" method="post">
+    <form action="/test/save_form/" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form }}
       <input type="submit" value="Submit">
