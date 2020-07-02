@@ -3,6 +3,7 @@ from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Submission, Output, FileSubmissionForm, FileSubmission
 from .forms import UploadFileForm
+from .analysis.yaraTests import yaraScan
 
 
 def index(request):
@@ -26,7 +27,7 @@ def home(request):
 def save_form(request):
     form = FileSubmissionForm(request.POST, request.FILES)
     entry = form.save()
-    ##ADD REROUTE IDK
+    yaraScan(entry.file)
     return render(request, 'test/home.html', {'form': form})
 
 def send_email(request, submission_id):
