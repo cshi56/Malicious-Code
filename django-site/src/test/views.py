@@ -27,7 +27,9 @@ def home(request):
 def save_form(request):
     form = FileSubmissionForm(request.POST, request.FILES)
     entry = form.save()
-    yaraScan(entry.file)
+    yaraMatches = yaraScan(str(entry.file))
+    for match in yaraMatches:
+        print(match)
     return render(request, 'test/home.html', {'form': form})
 
 def send_email(request, submission_id):
