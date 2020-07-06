@@ -40,4 +40,3 @@ def yaraScan(upload, debug=False):
         except:
             pass
     return listMatches
-

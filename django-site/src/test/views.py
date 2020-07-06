@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Submission, Output, FileSubmissionForm, FileSubmission
@@ -30,7 +30,7 @@ def save_form(request):
     yaraMatches = yaraScan(str(entry.file))
     for match in yaraMatches:
         print(match)
-    return render(request, 'test/home.html', {'form': form})
+    return redirect('/test/' + str(entry.id) + '/results')
 
 def send_email(request, submission_id):
     send_mail(
