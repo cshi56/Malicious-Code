@@ -2,41 +2,45 @@ import yara
 import os
 from tkinter.filedialog import askopenfilename
 
+listMatches = []
+
 def mycallback(data):
     listMatches.append(data['rule'])
     return yara.CALLBACK_CONTINUE
 
 
-listMatches = []
-
-def yaraScan(upload, debug=False):
-    if(debug):
-        filename = askopenfilename()
-        yarafiles = [os.path.join(root, name)
-                     for root, dirs, files in os.walk('rules/maldocs')
-                     for name in files
-                     if name.endswith((".yar"))]
-        for file in yarafiles:
-            try:
-                rule = yara.compile(file)
-                matches = rule.match(filename, callback=mycallback, which_callbacks=yara.CALLBACK_MATCHES)
-            except:
-                pass
-        for match in listMatches:
-            print(match)
-        return
-
+def emptyList():
     for i in range(len(listMatches)):
         listMatches.pop()
-    print("Running Yara tests")
-    yarafiles = [os.path.join(root, name)
-             for root, dirs, files in os.walk('test/analysis/rules/maldocs')
-             for name in files
-             if name.endswith((".yar"))]
-    for file in yarafiles:
+
+def createYaraFiles(directory):
+    yaraFiles = [os.path.join(root, name)
+                 for root, dirs, files in os.walk(directory)
+                 for name in files
+                 if name.endswith((".yar"))]
+    return yaraFiles
+
+def findMatches(upload, yaraFiles):
+    for file in yaraFiles:
         try:
             rule = yara.compile(file)
             matches = rule.match(upload, callback=mycallback, which_callbacks=yara.CALLBACK_MATCHES)
         except:
             pass
+
+
+
+def yaraScan():
+    emptyList()
+    filename = askopenfilename()
+    yaraFiles = createYaraFiles('rules')
+    findMatches(filename, yaraFiles)
+    for match in listMatches:
+        print(match)
+    return
+
+def maldocsScan(upload):
+    emptyList()
+    yaraFiles = createYaraFiles('test/analysis/rules/maldocs')
+    findMatches(upload, yaraFiles)
     return listMatches
