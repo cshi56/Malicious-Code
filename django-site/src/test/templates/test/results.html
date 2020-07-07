@@ -14,12 +14,33 @@
 
         {{ hash }}
 
+
+<div class="row">
+	<span class="subgallery">
+      <h2>{{ name }}</h2>
+      <form action='/test/home' method='GET'>
+        <button type='submit'>Click to upload another file.</button>
+      </form>
+	</span>
+  <span>
+   <form action='/test/{{ number }}/send_email/' method='GET'>
+    <button type='submit' class="button"> Send the details of this analysis to OIT</button>
+  </form>
+  </span>
+</div>
+
+
+	<article class="about">
+      <p> VERDICT:     Analysis found no threats. There's no sign of malware, but if the document looks suspicious, report it to OIT with the button above. </p>
+  </article>
+
         <a href="/test/{{ number }}/details">View Details </a>
 
+<!-- FIRST DRAFT ALERT BUTTON
         <form action='/test/{{ number }}/send_email/' method='GET'>
           <button type='submit'> Alert OIT</button>
         </form>
-
+-->
         {% if messages %}
 
             <div class="alert">
