@@ -3,8 +3,7 @@ import os
 from tkinter.filedialog import askopenfilename
 
 def mycallback(data):
-    print(data)
-    listMatches.append(data)
+    listMatches.append(data['rule'])
     return yara.CALLBACK_CONTINUE
 
 
