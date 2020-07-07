@@ -3,7 +3,7 @@ from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Submission, Output, FileSubmissionForm, FileSubmission
 from .forms import UploadFileForm
-from .analysis.yaraTests import yaraScan
+from .analysis.yaraTests import maldocsScan
 import hashlib
 from django.contrib import messages
 import json
@@ -48,9 +48,8 @@ def save_form(request):
     entry.save()
 
     #running yaraTests
-    yaraMatches = []
-    print(filename)
-    yaraMatches = yaraScan(filename)
+    print("Running Yara tests for " + filename)
+    yaraMatches = maldocsScan(filename)
     print(yaraMatches)
     entry.yaraResult = json.dumps(yaraMatches)
     entry.save()
