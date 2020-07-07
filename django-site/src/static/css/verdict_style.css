@@ -93,6 +93,23 @@ body {
 .row {
   display: inline-flex;
   align-items: center;
+  padding-left: 150px;
+  padding-right:100px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.clean{
+  background-image: url('/unnamed.png');
+  background-repeat: no-repeat;
+  color: green;
+  font: 25px Arial, sans-serif;
+}
+
+.dangerous{
+  background-image: url('307-3077324_x-mark-cross-computer-icons-clip-art-red-cross-icon.jpg');
+  background-repeat: no-repeat;
+  color: red;
 }
 
 .button:hover {
