@@ -16,14 +16,14 @@ class Submission(models.Model):
 
 class FileSubmission(models.Model):
     #this is the model where file submissions are stored
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, default=None, blank=True, null=True)
     run_date = models.DateTimeField('date submitted', auto_now_add=True)
     file = models.FileField(upload_to='uploads/')
     md5_hash = models.CharField(max_length=32, default=None, blank=True, null=True)
     yaraResult = models.TextField(default=None, blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.md5_hash
 
 class Output(models.Model):
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE)
@@ -37,7 +37,7 @@ class Output(models.Model):
 class FileSubmissionForm(ModelForm):
     class Meta:
         model = FileSubmission
-        fields = ['file', 'name']
+        fields = ['file']
 
 class OutputForm(ModelForm):
     class Meta:

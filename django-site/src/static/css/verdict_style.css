@@ -34,6 +34,20 @@ body {
 	font-size: 100%;
 }
 
+.about2 {
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 50px;
+	margin-left: 100px;
+	margin-right: 100px;
+	display: block;
+	background-color: #FFFFFF;
+	border-radius: 25px;
+	font-size: 25px;
+}
+
 #site-name {
     font: 'Open Sans';
     display: table-cell;
