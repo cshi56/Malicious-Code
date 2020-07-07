@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 <!--This is a comment-->
 {% block content %}
-    <p> Welcome to our website </p>
 
-    <br>
-    <br>
-
-    <form action="/test/save_form/" method="post" enctype="multipart/form-data">
+    <form class="about" action="/test/save_form/" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form }}
       <input type="submit" value="Submit">
     </form>
+
+<!-- More Info Section -->
+  <article class="about">
+    <p>Got a suspicious email? Click above to analyze emails and attachments for potential malware. This site tests for common malware signatures using open-source tools. </p>
+  </article>
+  <article class="about">
+    <p>It's everyone's responsibility to keep Duke safe from malware. More security resources from OIT can be found <a href="https://oit.duke.edu/category/security"> here. </a> </p>
+  </article>
+
 {% endblock %}

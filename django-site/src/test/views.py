@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Submission, Output, FileSubmissionForm, FileSubmission
 from .forms import UploadFileForm
 from .analysis.yaraTests import yaraScan
+from django.contrib import messages
 
 
 def index(request):
@@ -40,5 +41,6 @@ def send_email(request, submission_id):
     ['TO_USER@duke.edu'],
     fail_silently=False,
     )
+    messages.success(request, 'OIT has been notified and will take a look. Thanks!', fail_silently=True)
     strin = "/test/"+ submission_id.__str__() + "/results"
     return HttpResponseRedirect(strin)
