@@ -48,8 +48,7 @@ def save_form(request):
     entry.save()
 
     #running yaraTests
-    print("Running Yara tests")
-    print(filename)
+    print("Running Yara tests for " + filename)
     yaraMatches = maldocsScan(filename)
     print(yaraMatches)
     entry.yaraResult = json.dumps(yaraMatches)
