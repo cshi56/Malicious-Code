@@ -6,6 +6,7 @@ from .forms import UploadFileForm
 from .analysis.yaraTests import yaraScan
 import hashlib
 from django.contrib import messages
+import json
 
 
 def index(request):
@@ -43,8 +44,10 @@ def save_form(request):
 
     #running yaraTests
     yaraMatches = yaraScan(filename)
-    for match in yaraMatches:
-        print(match)
+    print(type(yaraMatches))
+    entry.yaraResult = json.dumps(yaraMatches)
+    entry.save()
+
 
     #redirects to results page
     return redirect('/test/' + str(entry.id) + '/results')
