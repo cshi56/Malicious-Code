@@ -15,7 +15,7 @@ def results(request, submission_id):
     obj = FileSubmission.objects.get(id=submission_id)
     md5_hash = obj.md5_hash
     name = str(obj.file)
-    context = {'hash': md5_hash, 'name': name}
+    context = {'hash': md5_hash, 'name': name, 'number': submission_id}
     return render(request, 'test/results.html', context)
 
 def details(request, submission_id):
