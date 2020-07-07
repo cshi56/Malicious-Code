@@ -11,10 +11,6 @@
 
 {% block content %}
 
-
-        {{ hash }}
-
-
 <div class="row">
 	<span class="subgallery">
       <h2>{{ name }}</h2>
@@ -30,11 +26,10 @@
 </div>
 
 
-	<article class="about">
+	<article class="about2">
       <p> {{ yaraOut }} </p>
+      <a class="button" href="/test/{{ number }}/details">View Details </a>
   </article>
-
-        <a href="/test/{{ number }}/details">View Details </a>
 
 <!-- FIRST DRAFT ALERT BUTTON
         <form action='/test/{{ number }}/send_email/' method='GET'>

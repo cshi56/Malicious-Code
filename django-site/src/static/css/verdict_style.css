@@ -34,6 +34,20 @@ body {
 	font-size: 100%;
 }
 
+.about2 {
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 50px;
+	margin-left: 100px;
+	margin-right: 100px;
+	display: block;
+	background-color: #FFFFFF;
+	border-radius: 25px;
+	font-size: 25px;
+}
+
 #site-name {
     font: 'Open Sans';
     display: table-cell;
@@ -93,6 +107,23 @@ body {
 .row {
   display: inline-flex;
   align-items: center;
+  padding-left: 150px;
+  padding-right:100px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.clean{
+  background-image: url('/unnamed.png');
+  background-repeat: no-repeat;
+  color: green;
+  font: 25px Arial, sans-serif;
+}
+
+.dangerous{
+  background-image: url('307-3077324_x-mark-cross-computer-icons-clip-art-red-cross-icon.jpg');
+  background-repeat: no-repeat;
+  color: red;
 }
 
 .button:hover {
