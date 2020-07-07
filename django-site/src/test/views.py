@@ -16,7 +16,12 @@ def results(request, submission_id):
     obj = FileSubmission.objects.get(id=submission_id)
     md5_hash = obj.md5_hash
     name = str(obj.file)
-    context = {'hash': md5_hash, 'name': name, 'number': submission_id}
+    yaraResult = json.loads(obj.yaraResult)
+    if len(yaraResult) == 0:
+        yaraOut = 'VERDICT: File is Safe'
+    else:
+        yaraOut = 'VERDICT: File is Dangerous'
+    context = {'hash': md5_hash, 'name': name, 'number': submission_id, 'yaraOut': yaraOut}
     return render(request, 'test/results.html', context)
 
 def details(request, submission_id):
@@ -43,8 +48,10 @@ def save_form(request):
     entry.save()
 
     #running yaraTests
+    yaraMatches = []
+    print(filename)
     yaraMatches = yaraScan(filename)
-    print(type(yaraMatches))
+    print(yaraMatches)
     entry.yaraResult = json.dumps(yaraMatches)
     entry.save()
 

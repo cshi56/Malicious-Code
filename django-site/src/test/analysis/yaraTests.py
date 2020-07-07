@@ -13,7 +13,7 @@ def yaraScan(upload, debug=False):
     if(debug):
         filename = askopenfilename()
         yarafiles = [os.path.join(root, name)
-                     for root, dirs, files in os.walk('rules')
+                     for root, dirs, files in os.walk('rules/maldocs')
                      for name in files
                      if name.endswith((".yar"))]
         for file in yarafiles:
@@ -26,7 +26,8 @@ def yaraScan(upload, debug=False):
             print(match)
         return
 
-
+    for i in range(len(listMatches)):
+        listMatches.pop()
     print("Running Yara tests")
     yarafiles = [os.path.join(root, name)
              for root, dirs, files in os.walk('test/analysis/rules/maldocs')
