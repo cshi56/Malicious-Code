@@ -15,9 +15,11 @@ class Submission(models.Model):
                 return 'Bad'
 
 class FileSubmission(models.Model):
+    #this is the model where file submissions are stored
     name = models.CharField(max_length=200)
     run_date = models.DateTimeField('date submitted', auto_now_add=True)
     file = models.FileField(upload_to='uploads/')
+    md5_hash = models.CharField(max_length=32, default=None, blank=True, null=True)
 
     def __str__(self):
         return self.name

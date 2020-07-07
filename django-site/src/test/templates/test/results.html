@@ -12,20 +12,21 @@
 {% block content %}
 
 
-        {% if latest_question_list %}
-        {% for output in latest_question_list %}
-          {% if risk is Bad %}
-            <p>VERDICT: Dangerous. Analysis found signs of malware. Don't open or run the file. Report it to OIT above.</p>
-          {% endif %}
-        {% endfor %}
-        {% else %}
-        <p>No outputs are available.</p>
-        {% endif %}
+        {{ hash }}
 
         <a href="/test/{{ number }}/details">View Details </a>
 
         <form action='/test/{{ number }}/send_email/' method='GET'>
           <button type='submit'> Alert OIT</button>
         </form>
+
+        {% if messages %}
+        <div class="alert">
+            {% for message in messages %}
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <p {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }} </p>
+            {% endfor %}
+        </div>
+        {% endif %}
 
 {% endblock %}
