@@ -19,11 +19,11 @@ class FileSubmission(models.Model):
     name = models.CharField(max_length=200, default=None, blank=True, null=True)
     run_date = models.DateTimeField('date submitted', auto_now_add=True)
     file = models.FileField(upload_to='uploads/')
-    md5_hash = models.CharField(max_length=32, default=None, blank=True, null=True)
+    sha256_hash = models.CharField(max_length=64, default=None, blank=True, null=True)
     yaraResult = models.TextField(default=None, blank=True, null=True)
 
     def __str__(self):
-        return self.md5_hash
+        return self.sha256_hash
 
 class Output(models.Model):
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE)

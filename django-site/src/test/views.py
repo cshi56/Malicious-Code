@@ -14,14 +14,14 @@ def index(request):
 
 def results(request, submission_id):
     obj = FileSubmission.objects.get(id=submission_id)
-    md5_hash = obj.md5_hash
+    sha256_hash = obj.sha256_hash
     name = str(obj.file)
     yaraResult = json.loads(obj.yaraResult)
     if len(yaraResult) == 0:
         yaraOut = 'VERDICT: File is Safe'
     else:
         yaraOut = 'VERDICT: File is Dangerous'
-    context = {'hash': md5_hash, 'name': name, 'number': submission_id, 'yaraOut': yaraOut}
+    context = {'hash': sha256_hash, 'name': name, 'number': submission_id, 'yaraOut': yaraOut}
     return render(request, 'test/results.html', context)
 
 def details(request, submission_id):
@@ -40,11 +40,11 @@ def save_form(request):
     filename = str(entry.file)
 
     #hashing file
-    md5_hash = hashlib.md5()
+    sha256_hash = hashlib.sha256()
     a_file = open(filename, "rb")
     content = a_file.read()
-    md5_hash.update(content)
-    entry.md5_hash = md5_hash.hexdigest()
+    sha256_hash.update(content)
+    entry.sha256_hash = sha256_hash.hexdigest()
     entry.save()
 
     #running yaraTests
