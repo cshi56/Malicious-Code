@@ -7,6 +7,7 @@ from .analysis.yaraTests import maldocsScan
 import hashlib
 from django.contrib import messages
 import json
+import magic
 
 
 def index(request):
@@ -47,10 +48,25 @@ def save_form(request):
     sha256_hash.update(content)
     entry.sha256_hash = sha256_hash.hexdigest()
     entry.save()
+    filetype = 'unknown'
+
+    #determining file type
+    officeExtensions = ['.docx', '.doc', '.docm', '.dot', '.dotm', '.dotx', '.docb', '.xls', '.xlt', '.xlm',
+                        '.xlsx', '.xlsm', '.xltx', '.xltm', '.xlsb', '.xla', '.xlam', '.xll', '.xlw',
+                        '.ppt', '.pot', '.pps', '.pptx', '.pptm', '.potx', '.potm', '.ppam', '.ppsx',
+                        '.ppsm', '.sldx', '.sldm']
+    if any(x in filename for x in officeExtensions):
+        magicType = magic.from_file(filename)
+        if 'Microsoft' not in magicType:
+            filetype = 'disguised'
+        else:
+            print(magicType)
+            filetype = 'msdoc'
 
     #running yaraTests
     print("Running Yara tests for " + filename)
-    yaraMatches = maldocsScan(filename)
+    if filetype is 'msdoc':
+        yaraMatches = maldocsScan(filename)
     print(yaraMatches)
     entry.yaraResult = json.dumps(yaraMatches)
     entry.save()
