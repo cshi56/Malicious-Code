@@ -25,8 +25,9 @@ def results(request, submission_id):
     return render(request, 'test/results.html', context)
 
 def details(request, submission_id):
-    submission_results_list = Output.objects.filter(submission__id=submission_id)
-    context = {'latest_question_list': submission_results_list, 'number': submission_id}
+    submission = FileSubmission.objects.get(id=submission_id)
+    results = json.loads(submission.yaraResult)
+    context = {'results': results, 'number': submission_id}
     return render(request, 'test/details.html', context)
 
 def home(request):

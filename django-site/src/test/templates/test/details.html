@@ -9,16 +9,16 @@
 {% endblock %}
 
 {% block content %}
-        {% if latest_question_list %}
+        {% if results %}
         <ul>
-        {% for output in latest_question_list %}
-          <li>{{ output.type }}  {{ output.risk }} {{ output.reason }}</li>
+        {% for output in results %}
+          <li>{{ output }}  </li>
         {% endfor %}
         </ul>
         {% else %}
         <p>No outputs are available.</p>
         {% endif %}
 
-        <a href="/test/{{ number }}/results">Return to Results Summary </a> 
+        <a href="/test/{{ number }}/results">Return to Results Summary </a>
         <br>
 {% endblock %}
