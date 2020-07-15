@@ -21,9 +21,11 @@ class FileSubmission(models.Model):
     file = models.FileField(upload_to='uploads/')
     sha256_hash = models.CharField(max_length=64, default=None, blank=True, null=True)
     yaraResult = models.TextField(default=None, blank=True, null=True)
+    VTUrl = models.CharField(max_length=200, default=None, blank=True, null=True)
+    VTDetections = models.IntegerField(default=-1)
 
     def __str__(self):
-        return self.sha256_hash
+        return str(self.file)
 
 class Output(models.Model):
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE)

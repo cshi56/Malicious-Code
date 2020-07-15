@@ -42,15 +42,21 @@ def save_form(request):
     filename = str(entry.file)
 
     #hashing file
-    sha256_hash = hashlib.sha256()
+    hash = hashlib.sha256()
     a_file = open(filename, "rb")
     content = a_file.read()
-    sha256_hash.update(content)
-    entry.sha256_hash = sha256_hash.hexdigest()
-    entry.save()
-    filetype = 'unknown'
+    hash.update(content)
+    entry.sha256_hash = hash.hexdigest()
+
+    #checking if file has already been scanned
+    if FileSubmission.objects.filter(sha256_hash=hash.hexdigest()).exists():
+        print("Found to exist")
+        entry.delete()
+        entry = FileSubmission.objects.get(sha256_hash=hash.hexdigest())
+        return redirect('/test/' + str(entry.id) + '/results')
 
     #determining file type
+    filetype = 'unknown'
     officeExtensions = ['.docx', '.doc', '.docm', '.dot', '.dotm', '.dotx', '.docb', '.xls', '.xlt', '.xlm',
                         '.xlsx', '.xlsm', '.xltx', '.xltm', '.xlsb', '.xla', '.xlam', '.xll', '.xlw',
                         '.ppt', '.pot', '.pps', '.pptx', '.pptm', '.potx', '.potm', '.ppam', '.ppsx',
@@ -60,7 +66,6 @@ def save_form(request):
         if 'Microsoft' not in magicType:
             filetype = 'disguised'
         else:
-            print(magicType)
             filetype = 'msdoc'
 
     #running yaraTests
