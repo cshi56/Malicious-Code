@@ -8,6 +8,7 @@ import hashlib
 from django.contrib import messages
 import json
 import magic
+from .analysis.virusTotalTest import VTScan
 
 
 def index(request):
@@ -76,6 +77,13 @@ def save_form(request):
     entry.yaraResult = json.dumps(yaraMatches)
     entry.save()
 
+    #running virus total tests
+    print("Running VirusTotal Tests")
+    VTOut = VTScan(filename, entry.sha256_hash)
+    entry.VTUrl = VTOut[1]
+    entry.VTDetections = VTOut[0]
+    entry.save()
+    print("Detections: " + str(VTOut[0]))
 
     #redirects to results page
     return redirect('/test/' + str(entry.id) + '/results')
