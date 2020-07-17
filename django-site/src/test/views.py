@@ -55,6 +55,10 @@ def save_form(request):
         print("Found to exist")
         entry.delete()
         entry = FileSubmission.objects.get(sha256_hash=hash.hexdigest())
+        VTOut = VTScan('', hash.hexdigest())
+        entry.VTUrl = VTOut[1]
+        entry.VTDetections = VTOut[0]
+        entry.save()
         return redirect('/test/' + str(entry.id) + '/results')
 
     #determining file type
@@ -69,6 +73,14 @@ def save_form(request):
             filetype = 'disguised'
         else:
             filetype = 'msdoc'
+    if '.eml' in filename:
+        filetype = 'eml'
+    if '.pdf' in filename:
+        magicType = magic.from_file(filename)
+        if 'PDF' not in magicType:
+            filetype = 'disguised'
+        else:
+            filetype = 'pdf'
 
     #running yaraTests
     print("Running Yara tests for " + filename)
