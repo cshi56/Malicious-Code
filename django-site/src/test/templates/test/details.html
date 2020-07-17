@@ -1,3 +1,4 @@
+<link href="../../../static/css/verdict_style.css" rel="stylesheet" type="text/css">
 {% extends 'base.html' %}
 
 {% block title %}
@@ -9,16 +10,24 @@
 {% endblock %}
 
 {% block content %}
+
+<br>
+
+<p class="intro_paragraph"> The following Yara rules were flagged for your submission: </p>
         {% if results %}
-        <ul>
+        <ul class="yara_list">
         {% for output in results %}
           <li>{{ output }}  </li>
         {% endfor %}
         </ul>
         {% else %}
-        <p>No outputs are available.</p>
+        <p class="yara_list">None</p>
         {% endif %}
 
-        <a href="/test/{{ number }}/results">Return to Results Summary </a>
-        <br>
+{% if VTCount != -1 %}
+<p class="intro_paragraph"> The number of VirusTotal tests flagged by your submission is: {{ VTCount }} <p>
+{% endif %}
+
+        <a class="button6" href="/test/{{ number }}/results">Return to Results Summary </a>
+
 {% endblock %}

@@ -1,3 +1,6 @@
+<style type="text/css">
+@import url("../../../static/css/verdict_style.css");
+</style>
 {% extends 'base.html' %}
 
 {% block title %}
@@ -11,33 +14,21 @@
 
 {% block content %}
 
-<div class="row">
-	<span class="subgallery">
-      <h2>{{ name }}</h2>
-      <form action='/test/home' method='GET'>
-        <button type='submit'>Click to upload another file.</button>
-      </form>
-	</span>
-  <span>
-   <form action='/test/{{ number }}/send_email/' method='GET'>
-    <button type='submit' class="button"> Send the details of this analysis to OIT</button>
-  </form>
-  </span>
-</div>
-
-
-	<article class="about2">
+	<article class="verdict">
       <p> {{ yaraOut }} </p>
-      <a class="button" href="/test/{{ number }}/details">View Details </a>
+      <a class="button6" href="/test/{{ number }}/details">View Details </a>
   </article>
 
-<!-- FIRST DRAFT ALERT BUTTON
-        <form action='/test/{{ number }}/send_email/' method='GET'>
-          <button type='submit'> Alert OIT</button>
-        </form>
--->
+<div class="about">
+    <p class="results_text">{{ name }}</p>
+    <form action='/test/home' method='GET'>
+      <button type='submit' class="button6">Click to upload another file.</button>
+    </form>
+   <form action='/test/{{ number }}/send_email/' method='GET'>
+    <button type='submit' class="button6"> Flag this analysis for OIT</button>
+  </form>
+</div>
         {% if messages %}
-
             <div class="alert">
             {% for message in messages %}
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
