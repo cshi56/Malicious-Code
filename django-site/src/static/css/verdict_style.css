@@ -7,8 +7,9 @@ body {
   	background-attachment: fixed;
 }
 
-.button6{ 
+.button6{
   background-color: #3680DF;
+  border-radius:0.15em;
   box-sizing: border-box;
   color: white;
   padding: 0.7em 1.4em;;
@@ -21,8 +22,9 @@ body {
   text-transform:uppercase;
   box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
   text-align:center;
-	position:relative;
+ position:relative;
   display:inline-block;
+	margin: 15px;
 }
 
 .button6:active{
@@ -41,29 +43,16 @@ body {
 }
 
 .about {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
     padding-top: 20px;
     padding-bottom: 20px;
     margin: 50px;
-    margin-left: 250px;
-    margin-right: 250px;
-	text-align: center;
-    background-color: transparent;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: inline-flex;
+    background-color: #FFFFFF;
     border-radius: 25px;
-    font-size: 100%;
-}
-
-.results_buttons {
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin: 50px;
-    margin-left: 250px;
-    margin-right: 250px;
-    background-color: transparent;
-    border-radius: 15px;
     font-size: 100%;
 }
 
@@ -83,27 +72,27 @@ body {
 }
 
 .intro_header{
-	font-family: 'Open Sans', sans-serif;
+	font-family:'Roboto',sans-serif;
 	font-size: 200%;
 	color: #FFFFFF;
+	width: 80%;
 	align-content: center;
-	text-align: center;
+	display: inline-block;
+	padding-left: 30px;
 	text-transform: uppercase;
-	font-weight: 700;
-	margin-top: 40;
+	font-weight: 900;
+	padding-top: 40px;
 }
 
 .intro_paragraph{
-	font-family: 'Roboto Mono', monospace;
+	font-family:'Roboto',sans-serif;
 	font-size: 100%;
 	color: #FFFFFF;
+	width: 80%;
 	align-content: center;
-	margin: auto;
 	display: inline-block;
-	text-align: center;
-	padding-left: 50px;
-	padding-right: 50px;
-	font-weight: 200;
+	padding-left: 30px;
+	font-weight: 600;
 }
 
 .verdict {
@@ -112,20 +101,20 @@ body {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	margin: 50px;
-	margin-left: 300px;
-	margin-right: 300px;
-	text-align: center;
-	border-radius: 15px;
+	margin-left: 100px;
+	margin-right: 100px;
+	display: inline-flex;
+	background-color: #FFFFFF;
+	border-radius: 25px;
 	font-size: 25px;
-	background-color: aliceblue;
 }
 
 .results_text{
-	color: white;
-	font-siz: 20px;
+	color: black;
+	font-siz: 15px;
 	font-family:'Roboto',sans-serif;
 	text-align: center;
-	margin: 10px;
+	margin: auto;
 }
 
 #site-name {
@@ -144,9 +133,8 @@ body {
   color: white;
   margin-left: 100px;
 	margin-right: 100px;
-  width: 60%;
-	height: 50px;
-  display: inline-block;
+  width: 40%;
+  display: block;
   font-size: 100%;
   border-radius: 9px;
   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
