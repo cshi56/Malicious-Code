@@ -30,7 +30,7 @@ def details(request, submission_id):
     submission = FileSubmission.objects.get(id=submission_id)
     results = json.loads(submission.yaraResult)
     count = submission.VTDetections
-    context = {'results': results, 'number': submission_id, 'VTCount': count}
+    context = {'results': results, 'number': submission_id, 'VTCount': count, 'vtlink': submission.VTUrl}
     return render(request, 'test/details.html', context)
 
 def home(request):

@@ -26,6 +26,7 @@
 
 {% if VTCount != -1 %}
 <p class="intro_paragraph"> The number of VirusTotal tests flagged by your submission is: {{ VTCount }} <p>
+<a class="button6" href="{{ vtlink }}" target="_blank">View Full VirusTotal Report</a>
 {% endif %}
 
         <a class="button6" href="/test/{{ number }}/results">Return to Results Summary </a>
