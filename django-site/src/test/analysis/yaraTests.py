@@ -44,3 +44,9 @@ def maldocsScan(upload):
     yaraFiles = createYaraFiles('test/analysis/rules/maldocs')
     findMatches(upload, yaraFiles)
     return listMatches
+
+def emlScan(upload):
+    emptyList()
+    yaraFiles = createYaraFiles('test/analysis/rules/email')
+    findMatches(upload, yaraFiles)
+    return listMatches

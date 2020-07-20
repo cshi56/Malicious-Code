@@ -3,7 +3,7 @@ from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Submission, Output, FileSubmissionForm, FileSubmission
 from .forms import UploadFileForm
-from .analysis.yaraTests import maldocsScan
+from .analysis.yaraTests import maldocsScan, emlScan
 import hashlib
 from django.contrib import messages
 import json
@@ -16,13 +16,16 @@ def index(request):
 
 def results(request, submission_id):
     obj = FileSubmission.objects.get(id=submission_id)
+    vtdetections = obj.VTDetections
     sha256_hash = obj.sha256_hash
     name = str(obj.file)
     yaraResult = json.loads(obj.yaraResult)
-    if len(yaraResult) == 0:
+    if len(yaraResult) == 0 and vtdetections == 0:
         yaraOut = 'VERDICT: File is Safe'
-    else:
+    elif vtdetections > 0:
         yaraOut = 'VERDICT: File is Dangerous'
+    else:
+        yaraOut = 'VERDICT: Inconclusive'
     context = {'hash': sha256_hash, 'name': name, 'number': submission_id, 'yaraOut': yaraOut}
     return render(request, 'test/results.html', context)
 
@@ -86,6 +89,8 @@ def save_form(request):
     print("Running Yara tests for " + filename)
     if filetype is 'msdoc' or filetype is 'pdf':
         yaraMatches = maldocsScan(filename)
+    if filetype is 'eml':
+        yaraMatches = emlScan(filename)
     print(yaraMatches)
     entry.yaraResult = json.dumps(yaraMatches)
     entry.save()
