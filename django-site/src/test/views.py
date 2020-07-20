@@ -84,7 +84,7 @@ def save_form(request):
 
     #running yaraTests
     print("Running Yara tests for " + filename)
-    if filetype is 'msdoc':
+    if filetype is 'msdoc' or filetype is 'pdf':
         yaraMatches = maldocsScan(filename)
     print(yaraMatches)
     entry.yaraResult = json.dumps(yaraMatches)
