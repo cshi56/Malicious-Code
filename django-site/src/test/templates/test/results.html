@@ -14,22 +14,18 @@
 
 {% block content %}
 
-	<article class="verdict">
-      <p> {{ yaraOut }} </p>
-      <a class="button6" href="/test/{{ number }}/details">View Details </a>
-  </article>
+	<div class="verdict">
+      <p style="display:inline-block;"> {{ yaraOut }} </p>
+      <a class="button6" href="/test/{{ number }}/details" style="display:inline-block;">View Details </a>
+  </div>
 
 <div class="about">
     <p class="results_text">{{ name }}</p>
-    <form action='/test/home' method='GET'>
-      <button type='submit' class="button6">Click to upload another file.</button>
-    </form>
-   <form action='/test/{{ number }}/send_email/' method='GET'>
-    <button type='submit' class="button6"> Flag this analysis for OIT</button>
-  </form>
+	<a class="button6" href="/test/home" style="display:inline-block;">Click to upload another file </a>
+	<a class="button6" href="/test/{{ number }}/send_email/" style="display:inline-block;">Flag this analysis for OIT </a>
 </div>
         {% if messages %}
-            <div class="alert">
+            <div class="alert" style="text-align:center;">
             {% for message in messages %}
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <p {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }} </p>
