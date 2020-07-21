@@ -24,6 +24,8 @@ def results(request, submission_id):
         yaraOut = 'VERDICT: File is Safe'
     elif vtdetections > 0:
         yaraOut = 'VERDICT: File is Dangerous'
+    elif vtdetections == -1:
+        yaraOut = 'File is taking longer than expected to analyze. Please come back to this page or upload the same file again in a few minutes to see results.'
     else:
         yaraOut = 'VERDICT: Inconclusive'
     context = {'hash': sha256_hash, 'name': name, 'number': submission_id, 'yaraOut': yaraOut}
@@ -91,6 +93,10 @@ def save_form(request):
         yaraMatches = maldocsScan(filename)
     if filetype is 'eml':
         yaraMatches = emlScan(filename)
+    if filetype is 'unknown':
+        yaraMatches = ['Unsupported filetype. Yara scans are only available for eml, pdf, or Microsoft Office files.']
+    if filetype is 'disguised':
+        yaraMatches = ['Disguised filetype']
     print(yaraMatches)
     entry.yaraResult = json.dumps(yaraMatches)
     entry.save()
