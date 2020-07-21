@@ -12,7 +12,7 @@ from .analysis.virusTotalTest import VTScan
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the test index.")
+    return redirect('/test/home')
 
 def results(request, submission_id):
     obj = FileSubmission.objects.get(id=submission_id)
