@@ -178,12 +178,11 @@ body {
   padding: 15px;
   background-color: limegreen;
   color: white;
-  margin-left: 100px;
-    margin-right: 100px;
-  width: 100%;
+  margin-left: auto;
+    margin-right: auto;
+  width: 700px;
     height: 50px;
-  display: inline-block;
-  font-size: 100%;
+  font-size: 15px;
   border-radius: 9px;
   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
 }

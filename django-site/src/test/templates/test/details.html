@@ -26,13 +26,15 @@
         {% endif %}
 
 {% if VTCount != -1 %}
-<div class="intro_paragraph">
+<div>
 <p class="intro_paragraph"> The number of VirusTotal tests flagged by your submission is: {{ VTCount }} </p>
 	</div>
 <br>
+
+<div style="padding-left: 50px;padding-right: 50px;">
 <a class="button6" href="{{ vtlink }}" target="_blank">View Full VirusTotal Report</a>
 {% endif %}
 
         <a class="button6" href="/test/{{ number }}/results">Return to Results Summary </a>
-
+</div>
 {% endblock %}
