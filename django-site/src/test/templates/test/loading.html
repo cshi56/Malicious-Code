@@ -1,12 +1,13 @@
+<link href="../../../static/css/verdict_style.css" rel="stylesheet" type="text/css">
 {% extends 'base.html' %}
 <!--This is a comment-->
 {% block content %}
-    <p> Welcome to our website </p>
-
-    <br>
-    <br>
-
     <div class="loader"></div>
 
+    <meta http-equiv="refresh" content="3; URL=http://127.0.0.1:8000/test/{{ submission_id }}/loading" />
+
+    <article class="loading_info">
+        <p>Please wait while your file is analyzed. This process can take up to 4 minutes.</p>
+    </article>
 
 {% endblock %}

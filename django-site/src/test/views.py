@@ -46,6 +46,10 @@ def save_form(request):
     #file is saved
     form = FileSubmissionForm(request.POST, request.FILES)
     entry = form.save()
+    return render(request, 'test/loading.html', {'submission_id': entry.id})
+
+def loading(request, submission_id):
+    entry = FileSubmission.objects.get(id=submission_id)
     filename = str(entry.file)
 
     #hashing file
