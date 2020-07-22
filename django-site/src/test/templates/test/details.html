@@ -13,19 +13,23 @@
 
 <br>
 
-<p class="intro_paragraph"> The following Yara rules were flagged for your submission: </p>
+
         {% if results %}
+<p class="intro_paragraph"> The following Yara rules were flagged for your submission: </p>
         <ul class="yara_list">
         {% for output in results %}
           <li>{{ output }}  </li>
         {% endfor %}
         </ul>
         {% else %}
-        <p class="yara_list">None</p>
+        <p class="intro_paragraph">No Yara rules were flagged for your submission.</p>
         {% endif %}
 
 {% if VTCount != -1 %}
-<p class="intro_paragraph"> The number of VirusTotal tests flagged by your submission is: {{ VTCount }} <p>
+<div class="intro_paragraph">
+<p class="intro_paragraph"> The number of VirusTotal tests flagged by your submission is: {{ VTCount }} </p>
+	</div>
+<br>
 <a class="button6" href="{{ vtlink }}" target="_blank">View Full VirusTotal Report</a>
 {% endif %}
 
