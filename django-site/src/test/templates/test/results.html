@@ -14,17 +14,31 @@
 
 {% block content %}
 
+{% if dangerous %}
+<div class="verdictdangerous">
+    <p style="display:inline-block; font-family: 'Roboto Mono', monospace; padding:15px;"> {{ yaraOut }} </p>
+</div>
+{% else %}
 <div class="verdict">
     <p style="display:inline-block; font-family: 'Roboto Mono', monospace; padding:15px;"> {{ yaraOut }} </p>
-    <a class="button6" href="/test/{{ number }}/details" style="display:inline-block; font-size:15px;">View Details </a>
 </div>
+{% endif %}
 
+{% if dangerous %}
+<article class="intro_paragraph">
+    <p>Do not run this file on your computer. If you have previously opened this file on your computer, please contact Duke OIT for assistance.</p>
+</article>
+<article class="intro_paragraph">
+    <p>It's everyone's responsibility to keep Duke safe from malware. If you received this file in your Duke email or want to alert OIT for another reason, please click the Alert OIT button below to send an email to Duke security professionals so that they can take action to protect the community from this malicious file. More security resources from OIT can be found <a href="https://oit.duke.edu/category/security" style="color:white; text-decoration: underline;"> here. </a></p>
+</article>
+{% endif %}
 
 
 <div class="about">
     <p class="results_text">{{ name }}</p>
     <a class="button6" href="/test/home" style="display:inline-block;">Click to upload another file </a>
-    <a class="button6" href="/test/{{ number }}/send_email/" style="display:inline-block;">Flag this analysis for OIT </a>
+    <a class="button6" href="/test/{{ number }}/send_email/" style="display:inline-block;">Alert OIT</a>
+    <a class="button6" href="/test/{{ number }}/details" style="display:inline-block;">View Technical Details</a>
 </div>
 <br>
 {% if messages %}

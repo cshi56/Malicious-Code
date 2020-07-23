@@ -150,6 +150,22 @@ body {
     background-color: white;
 }
 
+.verdictdangerous {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 50px;
+    margin-left: 300px;
+    margin-right: 300px;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 25px;
+    font-weight: 700;
+    background-color: #de0000;
+    color: white;
+}
+
 
 
 .results_text{

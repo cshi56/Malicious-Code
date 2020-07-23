@@ -16,19 +16,21 @@ def index(request):
 
 def results(request, submission_id):
     obj = FileSubmission.objects.get(id=submission_id)
+    dangerous = False
     vtdetections = obj.VTDetections
     sha256_hash = obj.sha256_hash
     name = str(obj.file)
     yaraResult = json.loads(obj.yaraResult)
     if len(yaraResult) == 0 and vtdetections == 0:
-        yaraOut = 'VERDICT: File is Safe'
+        yaraOut = 'VERDICT: FILE IS SAFE'
     elif vtdetections > 0:
-        yaraOut = 'VERDICT: File is Dangerous'
+        dangerous = True
+        yaraOut = 'VERDICT: FILE IS DANGEROUS'
     elif vtdetections == -1:
         yaraOut = 'File is taking longer than expected to analyze. Please come back to this page or upload the same file again in a few minutes to see results.'
     else:
         yaraOut = 'VERDICT: Inconclusive'
-    context = {'hash': sha256_hash, 'name': name, 'number': submission_id, 'yaraOut': yaraOut}
+    context = {'hash': sha256_hash, 'name': name, 'number': submission_id, 'yaraOut': yaraOut, 'dangerous': dangerous}
     return render(request, 'test/results.html', context)
 
 def details(request, submission_id):
