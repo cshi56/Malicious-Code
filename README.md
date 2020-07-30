@@ -4,11 +4,17 @@ This web tool was created for the Code+ program. It uses static analysis in orde
 
 ## Python Libraries Used
   asgiref==3.2.10
+
   Django==3.0.7
+
   python-magic==0.4.18
+
   pytz==2020.1
+
   sqlparse==0.3.1
+
   yara-python==4.0.2
+
   requests==2.24.0
 
 ## Source for Yara Rules
