@@ -1,6 +1,6 @@
 # Malicious-Code
 ## Description
-This web tool was created for the Duke Code+ program. It uses static analysis in order to detect malware in files.
+This web tool was created for the 2020 Duke Code+ program. It uses static analysis in order to detect malware in files.
 
 ## Python Libraries Used
   asgiref==3.2.10
@@ -40,6 +40,9 @@ to run the website.
 
 ## Authors
 Joe Cusano
+
 Luke Evans
+
 Celine Murugi
+
 Flora Shi
