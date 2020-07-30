@@ -32,7 +32,11 @@ https://github.com/Yara-Rules/rules
 Virus Total API
 
 ## Installation
-In order to run the website on your machine, you must install all of the python libraries listed above and in the requirements.txt file (We recommend installing these in a Python virtual environment).
+In order to run the website on your machine, you must install all of the python libraries listed above and in the requirements.txt file (We recommend installing these in a Python virtual environment). After that, use terminal to cd into the django-site/src folder. Then use
+```bash
+python manage.py runserver
+```
+to run the website.
 
 ## Authors
 Joe Cusano
