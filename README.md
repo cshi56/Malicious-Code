@@ -1,6 +1,6 @@
 # Malicious-Code
 ## Description
-This web tool was created for the Code+ program. It uses static analysis in order to detect malware in files.
+This web tool was created for the Duke Code+ program. It uses static analysis in order to detect malware in files.
 
 ## Python Libraries Used
   asgiref==3.2.10
@@ -27,6 +27,9 @@ https://github.com/Neo23x0/signature-base/blob/master/yara/general_officemacros.
 https://github.com/Neo23x0/signature-base/blob/master/yara/gen_dde_in_office_docs.yar
 
 https://github.com/Yara-Rules/rules
+
+## Other Sources
+Virus Total API
 
 ## Installation
 In order to run the website on your machine, you must install all of the python libraries listed above and in the requirements.txt file (We recommend installing these in a Python virtual environment).
